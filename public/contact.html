@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact Us</title>
+
+    <link rel="stylesheet" href="contact.css">
+</head>
+
+<body>
+
+    <!-- Animated Background -->
+    <div class="background">
+
+        <span class="blob blob1"></span>
+        <span class="blob blob2"></span>
+        <span class="blob blob3"></span>
+
+        <span class="particle p1"></span>
+        <span class="particle p2"></span>
+        <span class="particle p3"></span>
+        <span class="particle p4"></span>
+        <span class="particle p5"></span>
+        <span class="particle p6"></span>
+
+    </div>
+
+
+    <!-- Contact Form -->
+    <div class="contact-container">
+
+        <div class="contact-header">
+
+            <h1>CONTACT US</h1>
+
+            <div class="line"></div>
+
+        </div>
+
+
+        <form>
+
+            <!-- Name + Phone -->
+
+            <div class="row">
+
+                <div class="input-box">
+
+                    <label for="name">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Enter your name"
+                        required>
+
+                </div>
+
+
+                <div class="input-box">
+
+                    <label for="phone">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="Enter phone number"
+                        maxlength="10"
+                        pattern="[0-9]{10}"
+                        required>
+
+                </div>
+
+            </div>
+
+
+            <!-- Email -->
+
+            <div class="input-box">
+
+                <label for="email">
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required>
+
+            </div>
+
+
+            <!-- Subject -->
+
+            <div class="input-box">
+
+                <label for="subject">
+                    Subject
+                </label>
+
+                <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    placeholder="Enter subject"
+                    required>
+
+            </div>
+
+
+            <!-- Message -->
+
+            <div class="input-box">
+
+                <label for="message">
+                    Message
+                </label>
+
+                <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Write your message..."
+                    required></textarea>
+
+            </div>
+
+
+            <!-- Button -->
+
+            <button
+                type="submit"
+                class="send-btn">
+
+                Send Message
+
+                <span>➜</span>
+
+            </button>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>
+

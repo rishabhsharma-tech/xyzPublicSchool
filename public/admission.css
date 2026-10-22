@@ -1,0 +1,538 @@
+
+/* =================================
+   RESET
+================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =================================
+   BODY
+================================= */
+
+body {
+
+    min-height: 100vh;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #f3f6fa;
+
+    color: #333;
+
+    padding: 40px 20px;
+}
+
+
+/* =================================
+   MAIN CONTAINER
+================================= */
+
+.admission-container {
+
+    width: 100%;
+
+    max-width: 950px;
+
+    margin: auto;
+
+    padding: 35px;
+
+    background: #ffffff;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 8px 30px
+        rgba(0, 0, 0, 0.08);
+}
+
+
+/* =================================
+   HEADER
+================================= */
+
+.form-header {
+
+    text-align: center;
+
+    margin-bottom: 30px;
+
+    padding-bottom: 22px;
+
+    border-bottom:
+        1px solid
+        #e5e8ec;
+}
+
+
+.form-header h1 {
+
+    color: #243b55;
+
+    font-size: 32px;
+
+    font-weight: 700;
+
+    margin-bottom: 8px;
+}
+
+
+.form-header p {
+
+    color: #777;
+
+    font-size: 14px;
+}
+
+
+/* =================================
+   SECTION HEADINGS
+================================= */
+
+h2 {
+
+    margin-top: 28px;
+
+    margin-bottom: 18px;
+
+    padding-left: 11px;
+
+    color: #243b55;
+
+    font-size: 19px;
+
+    font-weight: 600;
+
+    border-left:
+        4px solid
+        #243b55;
+}
+
+
+/* =================================
+   FORM GRID
+================================= */
+
+.form-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 18px;
+}
+
+
+/* =================================
+   FORM GROUP
+================================= */
+
+.form-group {
+
+    margin-bottom: 5px;
+}
+
+
+.form-group label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #444;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+/* =================================
+   INPUT / SELECT / TEXTAREA
+================================= */
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+
+    width: 100%;
+
+    padding: 11px 12px;
+
+    border:
+        1px solid
+        #d5dbe2;
+
+    border-radius: 6px;
+
+    outline: none;
+
+    background: #ffffff;
+
+    color: #333;
+
+    font-size: 14px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* =================================
+   PLACEHOLDER
+================================= */
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+
+    color: #9aa3ad;
+}
+
+
+/* =================================
+   FOCUS
+================================= */
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+
+    border-color: #243b55;
+
+    box-shadow:
+        0 0 0 2px
+        rgba(36, 59, 85, 0.08);
+}
+
+
+/* =================================
+   TEXTAREA
+================================= */
+
+.form-group textarea {
+
+    min-height: 95px;
+
+    resize: vertical;
+}
+
+
+/* =================================
+   DOCUMENT GRID
+================================= */
+
+.documents-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 18px;
+
+    margin-bottom: 10px;
+}
+
+
+/* =================================
+   DOCUMENT BOX
+================================= */
+
+.document-box {
+
+    padding: 18px;
+
+    background: #fafbfc;
+
+    border:
+        1px dashed
+        #b9c2cc;
+
+    border-radius: 8px;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.document-box:hover {
+
+    border-color: #243b55;
+
+    background: #f6f8fa;
+}
+
+
+/* =================================
+   DOCUMENT LABEL
+================================= */
+
+.document-box label {
+
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: #333;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+/* =================================
+   FILE INPUT
+================================= */
+
+.document-box input[type="file"] {
+
+    width: 100%;
+
+    font-size: 13px;
+
+    color: #555;
+
+    cursor: pointer;
+}
+
+
+/* =================================
+   FILE BUTTON
+================================= */
+
+.document-box input[type="file"]::file-selector-button {
+
+    padding:
+        7px
+        12px;
+
+    margin-right: 8px;
+
+    border:
+        1px solid
+        #cbd3dc;
+
+    border-radius: 5px;
+
+    background: #ffffff;
+
+    color: #34495e;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.document-box input[type="file"]::file-selector-button:hover {
+
+    background: #243b55;
+
+    color: #ffffff;
+
+    border-color: #243b55;
+}
+
+
+/* =================================
+   DOCUMENT SMALL TEXT
+================================= */
+
+.document-box small {
+
+    display: block;
+
+    margin-top: 9px;
+
+    color: #888;
+
+    font-size: 11px;
+}
+
+
+/* =================================
+   DECLARATION
+================================= */
+
+.declaration {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 9px;
+
+    margin-top: 25px;
+
+    padding: 15px;
+
+    border-radius: 7px;
+
+    background: #f7f9fb;
+
+    color: #555;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+
+.declaration input {
+
+    width: 16px;
+
+    height: 16px;
+
+    margin-top: 2px;
+
+    cursor: pointer;
+
+    flex-shrink: 0;
+}
+
+
+.declaration label {
+
+    cursor: pointer;
+}
+
+
+/* =================================
+   SUBMIT BUTTON
+================================= */
+
+.submit-btn {
+
+    width: 100%;
+
+    margin-top: 20px;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #243b55;
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.submit-btn:hover {
+
+    background: #16283d;
+
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        0 5px 15px
+        rgba(36, 59, 85, 0.18);
+}
+
+
+.submit-btn:active {
+
+    transform:
+        translateY(0);
+}
+
+
+/* =================================
+   RESPONSIVE
+================================= */
+
+@media (max-width: 700px) {
+
+    body {
+
+        padding:
+            20px 10px;
+    }
+
+
+    .admission-container {
+
+        padding:
+            25px 18px;
+    }
+
+
+    .form-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 0;
+    }
+
+
+    .documents-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .form-header h1 {
+
+        font-size: 27px;
+    }
+
+
+    h2 {
+
+        font-size: 18px;
+    }
+
+}
+
+
+/* =================================
+   SMALL MOBILE
+================================= */
+
+@media (max-width: 400px) {
+
+    .admission-container {
+
+        padding:
+            22px 15px;
+    }
+
+
+    .form-header h1 {
+
+        font-size: 24px;
+    }
+
+
+    .document-box {
+
+        padding: 15px;
+    }
+
+}

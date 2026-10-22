@@ -1,0 +1,1180 @@
+
+
+/* ==========================
+        BASIC RESET
+========================== */
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+
+}
+
+html{
+    scroll-behavior:smooth;
+}
+body{
+    background:#f7f9fc;
+    color:#333;
+    overflow-x:hidden;
+
+}
+/* =====================================================
+                    NAVBAR
+===================================================== */
+header{
+
+
+    width:100%;
+    height:85px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 70px;
+    background:#0b3d91;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:1000;
+    box-shadow:0 5px 20px rgba(0,0,0,.25);
+
+}
+/* ==========================
+          LOGO
+========================== */
+
+
+.logo{
+    
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.logo img{
+
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    border:3px solid #FFD700;
+    object-fit:cover;
+}
+
+.logo h2{
+
+    color:white;
+    font-size:28px;
+    line-height:30px;
+}
+
+.logo p{
+
+    color:#FFD700;
+    font-size:14px;
+}
+/* ==========================
+        NAVIGATION MENU
+========================== */
+nav{
+    display:flex;
+    align-items:center;
+    gap:28px;
+    margin-left:auto;
+}
+nav a{
+    color:white;
+    text-decoration:none;
+    font-size:16px;
+    font-weight:500;
+    position:relative;
+    transition:.3s;
+}
+nav a:hover{
+    color:#FFD700;
+}
+
+/* Hover underline */
+nav a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-8px;
+    height:3px;
+    width:0;
+    background:#FFD700;
+    transition:.3s;
+}
+
+nav a:hover::after{
+width:100%;
+}
+/* ==========================
+        DROPDOWN MENU
+========================== */
+.dropdown{
+    position:relative;
+}
+
+.dropdown_menu{
+    position:absolute;
+    top:35px;
+    left:0;
+    width:220px;
+    background:white;
+    border-radius:10px;
+    padding:10px 0;
+    box-shadow:0 10px 25px rgba(0,0,0,.25);
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(15px);
+    transition:.3s;
+}
+.dropdown_menu a{
+    display:block;
+    color:#333;
+    padding:12px 20px;
+    font-size:15px;
+}
+
+.dropdown_menu a:hover{
+    background:#0b3d91;
+    color:white;
+}
+
+.dropdown:hover .dropdown_menu{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+/* ==========================
+        NAVBAR BUTTONS
+========================== */
+
+.buttons{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-left:25px;
+}
+.signin{
+    padding:10px 25px;
+    border:none;
+    border-radius:30px;
+    background:#FFD700;
+    color:black;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.signin:hover{
+    background:white;
+    transform:translateY(-3px);
+    }
+/* .admission{
+    padding:12px 25px;
+    border:none;
+    border-radius:30px;
+    background:white;
+    color:#0b3d91;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+} */
+
+
+
+.admission:hover{
+    background:#FFD700;
+    transform:scale(1.05);
+}
+/* =====================================================
+                    HERO SECTION
+===================================================== */
+.hero{
+    width:100%;
+    height:100vh;
+    margin-top:85px;
+    position:relative;
+    overflow:hidden;
+}
+.hero img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+/* Dark layer over image */
+.overlay{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.45);
+}
+/* Hero Text */
+.text{
+    position:absolute;
+    top:50%;
+    left:8%;
+    transform:translateY(-50%);
+    color:white;
+}
+
+.text h1{
+    font-size:60px;
+    margin-bottom:10px;
+    text-shadow:2px 2px 8px black;
+}
+.text p{
+    font-size:22px;
+    margin:20px 0;
+}
+/* Admission Button */
+
+.admission_open{
+    padding:15px 35px;
+    border:none;
+    border-radius:40px;
+    background:#FFD700;
+    color:black;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.admission_open:hover{
+    background:white;
+    transform:scale(1.05);
+}
+/* =====================================================
+                QUOTE DIVIDER SECTION
+===================================================== */
+
+.devider{
+    width:100%;
+    background:#FFD700;
+    color:#0b3d91;
+    padding:15px 0;
+    font-size:20px;
+    font-weight:600;
+    overflow:hidden;
+}
+.devider marquee{
+    letter-spacing:1px;
+
+}
+/* =====================================================
+                WELCOME SECTION
+===================================================== */
+.welcome{
+    width:90%;
+    margin:70px auto;
+    text-align:center;
+}
+.welcome h3{
+    font-size:38px;
+    color:#0b3d91;
+    margin-bottom:20px;
+    position:relative;
+}
+/* Heading underline */
+.welcome h3::after{
+    content:"";
+    display:block;
+    width:120px;
+    height:4px;
+    background:#FFD700;
+    margin:15px auto;
+    border-radius:20px;
+}
+.welcome p{
+    max-width:900px;
+    margin:auto;
+    font-size:20px;
+    line-height:35px;
+    color:#555;
+}
+/* =====================================================
+                FEATURES SECTION
+
+        Quality Education Cards
+===================================================== */
+.features{
+    width:90%;
+    margin:40px auto 80px;
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+}
+.card{
+    width:300px;
+    min-height:190px;
+    background:white;
+    padding:35px 25px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+    transition:.4s;    position:relative;
+    overflow:hidden;
+}
+/* Top yellow line */
+.card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:5px;
+    background:#FFD700;
+}
+.card h2{
+    color:#0b3d91;
+    font-size:25px;
+    margin-bottom:15px;
+}
+.card p{
+    color:#666;
+    font-size:16px;
+    line-height:28px;
+}
+.card:hover{
+    transform:translateY(-12px);
+    box-shadow:0 20px 35px rgba(0,0,0,.2);
+}
+/* =====================================================
+                ABOUT SECTION
+
+      Mission - Vision - Why Choose Us
+===================================================== */
+.about{
+    width:90%;
+    margin:60px auto;
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+.mission{
+    width:350px;
+    background:white;
+    padding:35px;
+    border-radius:20px;
+    border-top:5px solid #0b3d91;
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+    transition:.4s;
+}
+.mission:hover{
+    transform:translateY(-10px);
+    box-shadow:0 20px 35px rgba(0,0,0,.2);
+}
+.mission h2{
+    color:#0b3d91;
+    font-size:25px;
+    margin-bottom:15px;
+}
+.mission p{
+    color:#555;
+    font-size:16px;
+    line-height:28px;
+    text-align:justify;
+}
+/* Vision List */
+.mission ul{
+    margin-top:20px;
+    padding-left:25px;
+}
+.mission ul li{
+    margin-bottom:12px;
+    color:#555;
+    font-size:16px;
+}
+.mission ul li:hover{
+    color:#0b3d91;
+}/* =====================================================
+                ACHIEVEMENT TITLE
+===================================================== */
+.achieve{
+    width:100%;
+    text-align:center;
+    margin:70px 0 40px;
+}
+.achieve u{
+    font-size:40px;
+    color:#0b3d91;
+    text-decoration-color:#FFD700;
+    text-decoration-thickness:5px;
+}
+/* =====================================================
+                ACHIEVEMENT SECTION
+
+          Academic + Co-Curricular
+===================================================== */
+.achievement{
+    width:90%;
+    margin:auto;
+    display:flex;
+    justify-content:center;
+    gap:35px;
+    flex-wrap:wrap;
+}
+.achieve_list{
+    width:45%;
+    min-height:300px;
+    background:white;
+    padding:35px;
+    border-radius:20px;
+    border-left:6px solid #FFD700;
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+    transition:.4s;
+}
+.achieve_list:hover{
+    transform:translateY(-10px);
+    box-shadow:0 20px 35px rgba(0,0,0,.2);
+}
+/* Main Achievement Heading */
+.achieve_list > ul > li{
+    list-style:none;
+    color:#0b3d91;
+    font-size:24px;
+}
+/* Inner List */
+.achieve_list ul ul{
+    margin-top:20px;
+    padding-left:20px;
+}
+.achieve_list ul ul li{
+    color:#555;
+    font-size:16px;
+    line-height:28px;
+    margin-bottom:12px;
+}
+/* =====================================================
+                    GALLERY HEADING
+===================================================== */
+
+.gallery_head{
+    text-align:center;
+    margin:80px auto 40px;
+}
+.gallery_head h3{
+    color:#FFD700;
+    font-size:28px;
+    letter-spacing:2px;
+}
+.gallery_head h2{
+    color:#0b3d91;
+    font-size:40px;
+    margin-top:10px;
+}
+/* =====================================================
+                    GALLERY SECTION
+===================================================== */
+.gallery{
+    width:90%;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+}
+.activities{
+    height:300px;
+    border-radius:20px;
+    overflow:hidden;
+    position:relative;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+.photo{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.5s;
+}
+/* Image zoom effect */
+.activities:hover .photo{
+    transform:scale(1.15);
+}
+/* Hover text layer */
+.activities::after{
+    content:"View Activity";
+    position:absolute;
+    bottom:-60px;
+    left:0;
+    width:100%;
+    padding:15px;
+    background:rgba(11,61,145,.85);
+    color:white;
+    text-align:center;
+    font-size:20px;
+    transition:.4s;
+}
+.activities:hover::after{
+    bottom:0;
+}
+
+
+
+
+
+
+
+
+/* =====================================================
+                GALLERY BUTTON
+===================================================== */
+
+
+.gallery_button{
+
+
+    text-align:center;
+
+
+
+    margin:50px 0;
+
+
+
+}
+
+
+
+
+
+.view_gallery{
+
+
+    padding:15px 40px;
+
+
+
+    border:none;
+
+
+
+    border-radius:40px;
+
+
+
+    background:#0b3d91;
+
+
+
+    color:white;
+
+
+
+    font-size:18px;    font-weight:bold;    cursor:pointer;    transition:.3s;}.view_gallery:hover{    background:#FFD700;    color:black;
+
+
+
+    transform:scale(1.05);
+
+
+
+}
+
+
+
+
+
+/* Footer ke upar separator */
+
+
+.footer_devider{
+
+
+    width:100%;
+
+
+
+    height:8px;
+
+
+
+    background:#FFD700;
+
+
+
+}/* =====================================================
+                    FOOTER SECTION
+===================================================== */
+
+
+footer{
+
+    width:100%;
+
+    background:#0b3d91;
+
+    color:white;
+
+    margin-top:60px;
+
+}
+
+
+
+
+/* Footer Main Content */
+
+
+.footer_content{
+
+
+    width:90%;
+
+
+    margin:auto;
+
+
+    padding:60px 0;
+
+
+    display:flex;
+
+
+    justify-content:space-between;
+
+
+    gap:40px;
+
+
+    flex-wrap:wrap;
+
+
+}
+
+
+
+
+
+
+
+/* Footer Logo */
+
+
+.footer_logo{
+
+
+    width:250px;
+
+
+}
+
+
+
+.footer_logo img{
+
+
+    width:200px;
+
+
+    height:100px;
+
+
+    object-fit:contain;
+
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+
+
+.footer_logo p{
+
+
+    color:#ddd;
+
+
+    line-height:25px;
+
+
+    font-size:15px;
+
+
+}
+
+
+
+
+
+
+
+/* Footer Links */
+
+
+.footer_text{
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+}
+
+
+
+
+
+.footer_text h3{
+
+
+    color:#FFD700;
+
+
+    font-size:22px;
+
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+.footer_text a{
+
+
+    color:white;
+
+
+    text-decoration:none;
+
+
+    font-size:15px;
+
+
+    margin-bottom:12px;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+
+.footer_text a:hover{
+
+
+    color:#FFD700;
+
+
+    padding-left:8px;
+
+
+}
+
+
+
+
+
+
+/* =====================================================
+                DEVELOPER SECTION
+===================================================== */
+
+
+.developer{
+
+
+    width:100%;
+
+
+    padding:20px;
+
+
+    background:#06275f;
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+    gap:10px;
+
+
+    flex-wrap:wrap;
+
+
+    text-align:center;
+
+
+}
+
+
+
+.developer h4{
+
+
+    font-size:17px;
+
+
+}
+
+
+
+.developer p{
+
+
+    color:#FFD700;
+
+
+    font-size:16px;
+
+
+}
+
+
+
+
+
+
+
+/* =====================================================
+                ANIMATION
+===================================================== */
+
+
+@keyframes slideUp{
+
+
+    from{
+
+
+        opacity:0;
+
+
+        transform:translateY(40px);
+
+
+    }
+
+
+    to{
+
+
+        opacity:1;
+
+
+        transform:translateY(0);
+
+
+    }
+
+
+}
+
+
+
+.card,
+.mission,
+.achieve_list,
+.activities{
+
+
+    animation:slideUp .8s ease;
+
+
+}
+
+
+
+
+
+
+/* =====================================================
+                RESPONSIVE DESIGN
+
+              Tablet + Mobile
+===================================================== */
+
+
+
+@media(max-width:1100px){
+
+
+    header{
+
+
+        padding:0 30px;
+
+
+    }
+
+
+
+    nav{
+
+
+        gap:15px;
+
+
+    }
+
+
+
+    nav a{
+
+
+        font-size:14px;
+
+
+    }
+
+
+
+    .text h1{
+
+
+        font-size:45px;
+
+
+    }
+
+
+
+}
+
+
+
+
+
+
+
+@media(max-width:850px){
+
+
+
+    header{
+
+
+        height:auto;
+
+
+        padding:20px;
+
+
+        flex-direction:column;
+
+
+        gap:20px;
+
+
+        position:relative;
+
+
+    }
+
+
+
+    nav{
+
+
+        flex-wrap:wrap;
+
+
+        justify-content:center;
+
+
+        margin:auto;
+
+
+    }
+
+
+
+    .buttons{
+
+
+        margin:auto;
+
+
+    }
+
+
+
+
+    .hero{
+
+
+        margin-top:0;
+
+
+        height:80vh;
+
+
+    }
+
+
+
+    .text{
+
+
+        left:5%;
+
+
+    }
+
+
+
+    .text h1{
+
+
+        font-size:35px;
+
+
+    }
+
+
+
+    .text p{
+
+
+        font-size:18px;
+
+
+    }
+
+
+
+
+    .features,
+    .about,
+    .achievement{
+
+
+        flex-direction:column;
+
+
+        align-items:center;
+
+
+    }
+
+
+
+    .card,
+    .mission,
+    .achieve_list{
+
+
+        width:90%;
+
+
+    }
+
+
+
+    .gallery{
+
+
+        grid-template-columns:1fr;
+
+
+    }
+
+
+
+}
+
+
+
+
+
+
+@media(max-width:500px){
+
+
+    .logo h2{
+
+
+        font-size:22px;
+
+
+    }
+
+
+
+    .logo img{
+
+
+        width:50px;
+
+
+        height:50px;
+
+
+    }
+
+
+
+
+    nav{
+
+
+        flex-direction:column;
+
+
+    }
+
+
+
+
+    .text h1{
+
+
+        font-size:30px;
+
+
+    }
+
+
+
+
+    .welcome h3,
+    .gallery_head h2,
+    .achieve u{
+
+
+        font-size:30px;
+
+
+    }
+
+
+
+    .footer_content{
+
+
+        text-align:center;
+
+
+        justify-content:center;
+
+
+    }
+
+
+
+}

@@ -1,0 +1,288 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Poppins',sans-serif;
+
+}
+/* =====================================
+       ANIMATED LOGIN BACKGROUND
+===================================== */
+
+body{
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-family:Arial, sans-serif;
+
+    /* Main background */
+    background:
+        radial-gradient(circle at 20% 30%, rgba(255,215,0,0.25), transparent 25%),
+        radial-gradient(circle at 80% 70%, rgba(11,61,145,0.35), transparent 30%),
+        linear-gradient(135deg, #061d45, #0b3d91, #061d45);
+
+    background-size:200% 200%;
+
+    animation: backgroundMove 10s ease-in-out infinite;
+
+    overflow:hidden;
+
+    position:relative;
+}
+
+
+/* Background movement */
+
+@keyframes backgroundMove{
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+
+    100%{
+        background-position:0% 50%;
+    }
+
+}
+
+
+/* =====================================
+          FLOATING LIGHTS
+===================================== */
+
+
+body::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:250px;
+    height:250px;
+
+    background:rgba(255,215,0,0.18);
+
+    border-radius:50%;
+
+    top:-80px;
+    left:-80px;
+
+    filter:blur(5px);
+
+    animation:floatOne 8s ease-in-out infinite;
+
+}
+
+
+/* Second floating light */
+
+body::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:300px;
+    height:300px;
+
+    background:rgba(255,255,255,0.10);
+
+    border-radius:50%;
+
+    bottom:-120px;
+    right:-100px;
+
+    filter:blur(10px);
+
+    animation:floatTwo 10s ease-in-out infinite;
+
+}
+
+
+/* First animation */
+
+@keyframes floatOne{
+
+    0%{
+        transform:translate(0,0);
+    }
+
+    50%{
+        transform:translate(100px,80px);
+    }
+
+    100%{
+        transform:translate(0,0);
+    }
+
+}
+
+
+/* Second animation */
+
+@keyframes floatTwo{
+
+    0%{
+        transform:translate(0,0);
+    }
+
+    50%{
+        transform:translate(-100px,-70px);
+    }
+
+    100%{
+        transform:translate(0,0);
+    }
+
+}
+.main_body{
+
+    width:380px;
+
+    padding:35px;
+
+    background:rgba(255,255,255,0.96);
+
+    border-radius:20px;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.35);
+
+    text-align:center;
+
+    position:relative;
+
+    z-index:2;
+
+    animation:cardAppear 1s ease;
+
+}
+
+
+/* Login card entry */
+
+@keyframes cardAppear{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px) scale(.95);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0) scale(1);
+
+    }
+
+}
+.main_body img{
+
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #FFD700;
+    margin-bottom: 15px;
+    
+}
+
+.main_body h3{
+    font-size: 22px;
+    margin-bottom: 30px;
+}
+
+.main_body input{
+    width: 100%;
+    padding: 13px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    font-size: 15px;
+}
+
+.main_body input:focus{
+
+    border-color: #0b3d91;
+
+    box-shadow: 0 0 5px rgba(11,61,145,0.25);
+}
+
+.main_body a{
+
+    text-decoration: none;
+
+    color: #0b3d91;
+
+    font-size: 14px;
+}
+.main_body input + input + a{
+
+    display: block;
+
+    text-align: right;
+
+    margin-bottom: 20px;
+}
+.main_body button{
+
+    width: 100%;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #0b3d91;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+.main_body button:hover{
+    background-color: #FFD700;
+    color: #111;
+    transform: translateY(-2px);
+}
+.main_body button + a{
+
+    display: block;
+
+    margin-top: 20px;
+
+    font-size: 15px;
+}
+.main_body a:last-child{
+
+    display: inline-block;
+
+    margin-top: 25px;
+
+    color: #555;
+
+    font-size: 14px;
+}
+
+.main_body a:last-child:hover{
+
+    color: #0b3d91;
+}

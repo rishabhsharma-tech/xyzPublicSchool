@@ -1,0 +1,571 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Gallery</title>
+
+    <link rel="stylesheet"
+          href="gallery.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ==============================
+         BACKGROUND
+    =============================== -->
+
+    <div class="background">
+
+        <span class="blob blob1"></span>
+        <span class="blob blob2"></span>
+        <span class="blob blob3"></span>
+
+        <span class="particle p1"></span>
+        <span class="particle p2"></span>
+        <span class="particle p3"></span>
+        <span class="particle p4"></span>
+        <span class="particle p5"></span>
+        <span class="particle p6"></span>
+
+    </div>
+
+
+
+    <!-- ==============================
+         GALLERY
+    =============================== -->
+
+    <div class="gallery-container">
+
+
+        <!-- HEADER -->
+
+        <div class="gallery-header">
+
+            <h1>GALLERY</h1>
+
+            <div class="line"></div>
+
+        </div>
+
+
+
+        <!-- UPLOAD -->
+
+        <div class="upload-section">
+
+            <input
+                type="file"
+                id="photoInput"
+                accept="image/*"
+                multiple
+                hidden>
+
+
+            <button
+                class="upload-btn"
+                id="uploadBtn">
+
+                <span>＋</span>
+
+                Upload Photo
+
+            </button>
+
+        </div>
+
+
+
+        <!-- PHOTO COUNT -->
+
+        <div class="photo-count">
+
+            <span id="photoCount">0</span>
+            Photos
+
+        </div>
+
+
+
+        <!-- GALLERY -->
+
+        <div
+            class="gallery"
+            id="gallery">
+
+        </div>
+
+
+        <!-- EMPTY MESSAGE -->
+
+        <div
+            class="empty-message"
+            id="emptyMessage">
+
+            <div class="empty-icon">
+                🖼️
+            </div>
+
+            <p>
+                No photos uploaded yet
+            </p>
+
+            <small>
+                Click "Upload Photo" to add images
+            </small>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        /* ==================================
+           DATABASE
+        ================================== */
+
+        let db;
+
+
+        const request =
+            indexedDB.open(
+                "MyGalleryDB",
+                1
+            );
+
+
+        /* Database create */
+
+        request.onupgradeneeded = function(event) {
+
+            db = event.target.result;
+
+
+            if (!db.objectStoreNames.contains("photos")) {
+
+                db.createObjectStore(
+                    "photos",
+                    {
+                        keyPath: "id",
+                        autoIncrement: true
+                    }
+                );
+
+            }
+
+        };
+
+
+        /* Database ready */
+
+        request.onsuccess = function(event) {
+
+            db = event.target.result;
+
+            loadPhotos();
+
+        };
+
+
+        request.onerror = function() {
+
+            alert(
+                "Gallery storage open nahi ho paaya."
+            );
+
+        };
+
+
+
+        /* ==================================
+           ELEMENTS
+        ================================== */
+
+        const uploadBtn =
+            document.getElementById("uploadBtn");
+
+        const photoInput =
+            document.getElementById("photoInput");
+
+        const gallery =
+            document.getElementById("gallery");
+
+        const photoCount =
+            document.getElementById("photoCount");
+
+        const emptyMessage =
+            document.getElementById("emptyMessage");
+
+
+
+        /* ==================================
+           OPEN FILE SELECTOR
+        ================================== */
+
+        uploadBtn.addEventListener(
+            "click",
+            function() {
+
+                photoInput.click();
+
+            }
+        );
+
+
+
+        /* ==================================
+           UPLOAD PHOTOS
+        ================================== */
+
+        photoInput.addEventListener(
+            "change",
+            function() {
+
+                const files = this.files;
+
+
+                if (!files.length) {
+                    return;
+                }
+
+
+                Array.from(files).forEach(
+                    function(file) {
+
+                        if (
+                            !file.type.startsWith(
+                                "image/"
+                            )
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        savePhoto(file);
+
+                    }
+                );
+
+
+                /* Same file dobara select
+                   karne ke liye */
+
+                this.value = "";
+
+            }
+        );
+
+
+
+        /* ==================================
+           SAVE PHOTO
+        ================================== */
+
+        function savePhoto(file) {
+
+            const transaction =
+                db.transaction(
+                    ["photos"],
+                    "readwrite"
+                );
+
+
+            const store =
+                transaction.objectStore(
+                    "photos"
+                );
+
+
+            const photo = {
+
+                name: file.name,
+
+                type: file.type,
+
+                image: file,
+
+                date: new Date().toISOString()
+
+            };
+
+
+            store.add(photo);
+
+
+            transaction.oncomplete =
+                function() {
+
+                    loadPhotos();
+
+                };
+
+        }
+
+
+
+        /* ==================================
+           LOAD ALL PHOTOS
+        ================================== */
+
+        function loadPhotos() {
+
+            gallery.innerHTML = "";
+
+
+            const transaction =
+                db.transaction(
+                    ["photos"],
+                    "readonly"
+                );
+
+
+            const store =
+                transaction.objectStore(
+                    "photos"
+                );
+
+
+            const request =
+                store.getAll();
+
+
+            request.onsuccess =
+                function() {
+
+                    const photos =
+                        request.result;
+
+
+                    photoCount.textContent =
+                        photos.length;
+
+
+                    if (photos.length === 0) {
+
+                        emptyMessage.style.display =
+                            "block";
+
+                    } else {
+
+                        emptyMessage.style.display =
+                            "none";
+
+                    }
+
+
+                    photos.forEach(
+                        function(photo) {
+
+                            createPhoto(
+                                photo
+                            );
+
+                        }
+                    );
+
+                };
+
+        }
+
+
+
+        /* ==================================
+           CREATE PHOTO CARD
+        ================================== */
+
+        function createPhoto(photo) {
+
+
+            const photoBox =
+                document.createElement(
+                    "div"
+                );
+
+
+            photoBox.className =
+                "photo-box";
+
+
+            /* Image */
+
+            const img =
+                document.createElement(
+                    "img"
+                );
+
+
+            const imageURL =
+                URL.createObjectURL(
+                    photo.image
+                );
+
+
+            img.src =
+                imageURL;
+
+
+            img.alt =
+                photo.name;
+
+
+            img.onload =
+                function() {
+
+                    URL.revokeObjectURL(
+                        imageURL
+                    );
+
+                };
+
+
+            /* Bottom area */
+
+            const photoInfo =
+                document.createElement(
+                    "div"
+                );
+
+
+            photoInfo.className =
+                "photo-info";
+
+
+            /* File name */
+
+            const fileName =
+                document.createElement(
+                    "span"
+                );
+
+
+            fileName.className =
+                "file-name";
+
+
+            fileName.textContent =
+                photo.name;
+
+
+            /* Delete */
+
+            const deleteBtn =
+                document.createElement(
+                    "button"
+                );
+
+
+            deleteBtn.className =
+                "delete-btn";
+
+
+            deleteBtn.innerHTML =
+                "🗑 Delete";
+
+
+            deleteBtn.addEventListener(
+                "click",
+                function() {
+
+                    deletePhoto(
+                        photo.id
+                    );
+
+                }
+            );
+
+
+            photoInfo.appendChild(
+                fileName
+            );
+
+
+            photoInfo.appendChild(
+                deleteBtn
+            );
+
+
+            photoBox.appendChild(
+                img
+            );
+
+
+            photoBox.appendChild(
+                photoInfo
+            );
+
+
+            gallery.appendChild(
+                photoBox
+            );
+
+        }
+
+
+
+        /* ==================================
+           DELETE PHOTO
+        ================================== */
+
+        function deletePhoto(id) {
+
+            const confirmDelete =
+                confirm(
+                    "Kya aap ye photo delete karna chahte ho?"
+                );
+
+
+            if (!confirmDelete) {
+
+                return;
+
+            }
+
+
+            const transaction =
+                db.transaction(
+                    ["photos"],
+                    "readwrite"
+                );
+
+
+            const store =
+                transaction.objectStore(
+                    "photos"
+                );
+
+
+            store.delete(id);
+
+
+            transaction.oncomplete =
+                function() {
+
+                    loadPhotos();
+
+                };
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
